@@ -11,6 +11,7 @@
 	Photoresistor
   
 ## Circuit Diagram:
+<img width="971" height="643" alt="603804185-e6f32868-d8ca-497c-bfbe-1d6a1c2cc9ba" src="https://github.com/user-attachments/assets/16b7951e-be16-4d21-bbb9-17a7202807dd" />
 
 
 ## Theory :
@@ -66,10 +67,35 @@ o	The middle point (between LDR and resistor) connects to the Arduino analog inp
 
 ## Code:
 
-
+const int LEDPin=13;
+const int LDRPin=A0;
+void setup()
+{
+ Serial.begin(9600);
+ pinMode(LEDPin,OUTPUT);
+ pinMode(LDRPin,INPUT);
+}
+void loop()
+{
+ int LDRStatus=analogRead(LDRPin);
+ if(LDRStatus<=500)
+ {
+ digitalWrite(LEDPin,HIGH);
+ Serial.print("Current Light Intensity Value is -");
+ Serial.println(LDRStatus);
+ }
+ else
+ {
+ digitalWrite(LEDPin, LOW);
+ Serial.print("Current Light Intensity Value is -");
+ Serial.println(LDRStatus);
+ }
+}  
 
 ## Output:
  
+<img width="982" height="695" alt="603804201-19808f26-436b-4e5e-b5ce-1d2774dc2cb2" src="https://github.com/user-attachments/assets/fad39e6a-4616-495d-9e1e-3deffc457c87" />
 
 
 ## Result:
+an automatic street light system using Arduino and LDR sensor that controls lights based on ambient light level got output
